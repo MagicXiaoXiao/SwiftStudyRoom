@@ -10,7 +10,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    let datas = ["Adsk","Ckds","Bkls","Olaj","Aklll","Inkdsj","Ljkds","Bjkls","Cjkl","Dklld","Aiojd","Ksjk"]
+    var datas:[String] = ["Adsk","Ckds","Bkls","Olaj","Aklll","Inkdsj","Ljkds","Bjkls","Cjkl","Dklld","Aiojd","Ksjk"]
     
     typealias DictionaryValue = (_ section: Int)->[String]?
     
@@ -31,7 +31,7 @@ class TableViewController: UITableViewController {
         tableView.sectionIndexTrackingBackgroundColor = .lightGray
         tableView.sectionIndexBackgroundColor = .clear
         
-        let newDatas = datas.flatMap { $0.first?.description.uppercased()}
+        let newDatas = datas.flatMap { $0.first?.description.uppercased() }
         let indexDatas = Array(Set(newDatas)).sorted()
         
         for item in indexDatas {

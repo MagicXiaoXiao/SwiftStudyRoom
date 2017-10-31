@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let count = 35 //item数量
+    let count = 30 //item数量
     
     private var datas:[Int] = []
     
@@ -21,14 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            collectionView.layoutIfNeeded()
-            let spacing: CGFloat = 15
-            layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
-            layout.minimumInteritemSpacing = spacing
-            layout.minimumLineSpacing = spacing
-            let width = (collectionView.bounds.width - spacing * 5) / 4
-            let height = (collectionView.bounds.height - spacing * 3) / 2
-            layout.itemSize = CGSize(width: width, height: height)
+            layout.itemSize = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
         }
 
         let num = count / 8
@@ -45,9 +38,9 @@ class ViewController: UIViewController {
         }
         pageControl.numberOfPages = datas.count
         pageControl.currentPage = 0
-        collectionView.reloadData()
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,27 +56,20 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return datas.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if datas[section] % 8 != 0 {
-            return datas[section] + (8 - datas[section] % 8)
-        }
-        return datas[section]
+        
+        return datas.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let item = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
-        let itemCount = datas[indexPath.section]
-        if indexPath.row + 1 <= itemCount {
-            item.isHidden = false
-            if let label = item.viewWithTag(101) as? UILabel {
-                label.text = "\(indexPath.section * 8 + indexPath.row)"
-            }
-        }else {
-            item.isHidden = true
+        if let myCell = item as? CollectionViewCell {
+            myCell.indexTag = indexPath.row
+            myCell.datas = datas[indexPath.row]
         }
         
         return item

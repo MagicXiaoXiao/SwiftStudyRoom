@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,17 +45,34 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qTw-S0-MIn">
                                             <rect key="frame" x="0.0" y="0.0" width="171" height="168"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAT-0S-dUA">
+                                            <rect key="frame" x="137" y="10" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="UAT-0S-dUA" secondAttribute="height" multiplier="1:1" id="cMI-JU-1w6"/>
+                                                <constraint firstAttribute="width" constant="24" id="i9J-tj-RGe"/>
+                                            </constraints>
+                                            <state key="normal" image="love_de"/>
+                                            <state key="disabled" image="love_de"/>
+                                            <state key="selected" image="love"/>
+                                            <state key="highlighted" image="love"/>
+                                            <connections>
+                                                <action selector="tapLoveAction:" destination="9hJ-hT-bpL" eventType="touchUpInside" id="gIR-YP-7DH"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UAT-0S-dUA" secondAttribute="trailing" constant="10" id="3AI-6a-NhB"/>
                                     <constraint firstAttribute="trailing" secondItem="qTw-S0-MIn" secondAttribute="trailing" id="7iE-jU-WvS"/>
                                     <constraint firstItem="qTw-S0-MIn" firstAttribute="top" secondItem="9hJ-hT-bpL" secondAttribute="top" id="Q7G-Ok-bPk"/>
+                                    <constraint firstItem="UAT-0S-dUA" firstAttribute="top" secondItem="9hJ-hT-bpL" secondAttribute="top" constant="10" id="ozh-6f-XUo"/>
                                     <constraint firstAttribute="bottom" secondItem="qTw-S0-MIn" secondAttribute="bottom" id="t91-8z-Meb"/>
                                     <constraint firstItem="qTw-S0-MIn" firstAttribute="leading" secondItem="9hJ-hT-bpL" secondAttribute="leading" id="vqM-6F-8LR"/>
                                 </constraints>
                                 <size key="customSize" width="171" height="168"/>
                                 <connections>
                                     <outlet property="imageView" destination="qTw-S0-MIn" id="YpX-s0-x6j"/>
+                                    <outlet property="loveButton" destination="UAT-0S-dUA" id="eiW-3w-nA4"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -70,4 +88,8 @@
             <point key="canvasLocation" x="8.8000000000000007" y="170.46476761619192"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="love" width="48" height="48"/>
+        <image name="love_de" width="48" height="48"/>
+    </resources>
 </document>

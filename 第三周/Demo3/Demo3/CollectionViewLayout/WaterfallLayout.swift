@@ -6,6 +6,10 @@
 //  Copyright © 2017年 卡塞尔学院. All rights reserved.
 //
 
+//参考网上案例自己再调整一番~
+//参考链接：https://www.raywenderlich.com/164608/uicollectionview-custom-layout-tutorial-pinterest-2
+//中文链接：http://www.cocoachina.com/ios/20150831/13247.html
+
 import UIKit
 
 protocol WaterfallLayoutDelegate: NSObjectProtocol {
@@ -20,6 +24,7 @@ class WaterfallLayout: UICollectionViewFlowLayout {
     
     private var numberOfColumns = 2
     private var cellPadding: CGFloat = 5
+    
     var cellWidth: CGFloat {
         guard let collectionView = self.collectionView else { return 0 }
         let spacing = cellPadding * 4 + collectionView.contentInset.left + collectionView.contentInset.right
